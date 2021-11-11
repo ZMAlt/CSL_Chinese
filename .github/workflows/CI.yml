@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  BuildAndDeploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: "1.6"
+
+      # 这里是用来安装 Books 必备的字体的，不能删除
+      - name: Install dependencies
+        run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate();
+                using Books; Books.install_dependencies()'
+
+      - run: julia --project -e 'using CSL_Chinese; '
+
+      - name: Deploy to gh-pages branch
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
+          publish_dir: ./_build/

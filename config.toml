@@ -1,0 +1,19 @@
+[projects]
+
+  [projects.default]
+  contents = [
+    "CSL_introduce",
+    "XML_basis",
+    "CSL_1.0.1_spec",
+    "locale_file"
+  ]
+  port = 8006
+
+  # Extra directories to be copied.
+  extra_directories = [
+    "images"
+  ]
+
+  online_url = "https://zmalt.github/io/csl"
+
+  output_filename = "CSL Chinese"
