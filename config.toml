@@ -5,7 +5,6 @@
     "CSL_introduce",
     "XML_basis",
     "CSL_1.0.1_spec",
-    "test"
     "locale_file"
   ]
   port = 8006
