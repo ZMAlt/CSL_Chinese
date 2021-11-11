@@ -24,7 +24,7 @@ jobs:
         run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate();
                 using Books; Books.install_dependencies()'
 
-      - run: julia --project -e 'using CSL_Chinese; using Books; gen();'
+      - run: julia --project -e 'using CSL_Chinese; using Books; mkpath("_build"); gen();'
 
       - name: Deploy to gh-pages branch
         if: ${{ github.event_name != 'pull_request' }}
