@@ -9,27 +9,28 @@ on:
 
 jobs:
   BuildAndDeploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@v2
         with:
           version: "1"
 
-      - uses: julia-actions/cache@v1
+      - uses: julia-actions/cache@v2
 
       - run: julia --color=yes --project -e 'using Pkg; Pkg.instantiate()'
 
-      - run: julia --project -e 'using BookTemplate; BookTemplate.build()'
+      - run: julia --project -e 'using CSL_Chinese; CSL_Chinese.build()'
 
       - name: Deploy to gh-pages branch
         if: ${{ github.event_name != 'pull_request' }}
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
+          cname: zmalt.github.io/CSL_Chinese
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
           publish_dir: ./_build/
