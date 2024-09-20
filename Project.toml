@@ -1,6 +1,6 @@
 name = "CSL_Chinese"
 uuid = "2c2349b6-e3e1-473f-81d9-e9a98781fcdf"
-authors = ["maozhou <maozhou@whu.edu.cn>"]
+authors = ["maozhou <maozhougeo@gmail.com>"]
 version = "0.1.0"
 
 [deps]

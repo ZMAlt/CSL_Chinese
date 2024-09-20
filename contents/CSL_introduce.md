@@ -79,7 +79,6 @@
 
 要明白 CSL 是怎么运作的，首先要了解 CSL 的生态。`Style`指的是 CSL 样式，`Item Metadata`指的是每篇参考文献的作者，题目等信息，`Locale Files`是为实现与语言无关（指英语，汉语等）的格式的本地化文件，`Citation Details`指的是影响引文信息或参考文献列表表现的细节，比如顺序，位置等。
 
-![](<https://docs.citationstyles.org/en/stable/_images/csl-infrastructure.png>)
 
 ### 独立格式和从属格式
 

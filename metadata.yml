@@ -1,33 +1,11 @@
 ---
-title: CSL Chinese
+title: CSL_Chinese
 subtitle: ""
 author:
   - Mao Zhou
 
-html-license: ''
-pdf-footer: ""
-tex-license: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
-lang: en-US
-tags: [Julialang, CSL, Chinese]
-repo: https://test
+repo: 
 secPrefix: Section
-figPrefix: Figure
-tblPrefix: Table
-titlepage: true
-bibliography: pandoc/references.bib
 allow-subsubsections: true
-
-# Only used in PDF.
-titlepage-top: >
-  \begin{tabular}{l}
-  Mao Zhou\\
-  Wu Han University\\
-  China\\
-  \end{tabular}
-
-titlepage-bottom: |
-  First edition published 2021
-
-  \url{https://juliadatascience.io}
 
 ---

@@ -1,31 +1,23 @@
 module CSL_Chinese
 
+using Books
 using Reexport: @reexport
 
-@reexport begin
-    using Books:
-        BUILD_DIR,
-        @sc,
-        @sco,
-        Options,
-        build_all,
-        catch_show,
-        clean_stacktrace,
-        code_block,
-        convert_output,
-        gen,
-        output_block,
-        sc,
-        sco,
-        scob,
-        serve,
-        without_caption_label
+@reexport using Books:
+    build_all, html, pdf,
+    gen
 
+"""
+    build()
+
+This function is called during CI.
+"""
+function build()
+    # To avoid publishing broken websites.
+    fail_on_error = true
+    gen(; fail_on_error)
+    html()
+    #build_all(; fail_on_error)
 end
-
-# Showcode additions.
-export sce, scsob, trim_last_n_lines, plainblock
-
-
 
 end # module
