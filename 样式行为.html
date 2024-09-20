@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Mao Zhou" />
+  <title>样式行为 - CSL_Chinese</title>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+    <script src="/mousetrap.min.js"></script>
+    <style>
+  @font-face {
+    font-family: JuliaMono-Regular;
+    src: url("/JuliaMono-Regular.woff2");
+  }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/github.min.css">
+<script src="/highlight.min.js"></script>
+<script src="/julia.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre').forEach((el) => {
+        if (!el.classList.contains('output')) {
+            hljs.highlightElement(el);
+        }
+    });
+});
+</script>
+ 
+</head>
+<body>
+<script>
+function click_next() {
+  var next = document.getElementById('nav-next');
+  next.firstElementChild.nextElementSibling.click();
+}
+function click_prev() {
+  var prev = document.getElementById('nav-prev');
+  prev.firstElementChild.click();
+}
+Mousetrap.bind('right', click_next);
+Mousetrap.bind('h', click_prev);
+Mousetrap.bind('left', click_prev);
+Mousetrap.bind('l', click_next);
+</script>
+
+<div class="books-container">
+<aside class="books-menu">
+<input type="checkbox" id="menu">
+<label for="menu">☰</label>
+<div class="books-title">
+<a href="/">CSL_Chinese</a>
+</div><br />
+<span class="books-subtitle">
+
+</span>
+<div class="books-menu-content">
+<li><a class="menu-level-1" href="/welcome-1"><b></b> Welcome</a></li>
+<li><a class="menu-level-1" href="/csl-介绍"><b>1</b> CSL 介绍</a></li>
+<li><a class="menu-level-2" href="/前言"><b>1.1</b> 前言</a></li>
+<li><a class="menu-level-2" href="/csl-是什么"><b>1.2</b> CSL 是什么</a></li>
+<li><a class="menu-level-2" href="/引用格式"><b>1.3</b> 引用格式</a></li>
+<li><a class="menu-level-2" href="/csl-生态"><b>1.4</b> CSL 生态</a></li>
+<li><a class="menu-level-2" href="/理解-csl-格式"><b>1.5</b> 理解 CSL 格式</a></li>
+<li><a class="menu-level-2" href="/更进一步"><b>1.6</b> 更进一步</a></li>
+<li><a class="menu-level-1" href="/xml基础"><b>2</b> XML基础</a></li>
+<li><a class="menu-level-2" href="/元素"><b>2.1</b> 元素</a></li>
+<li><a class="menu-level-2" href="/属性"><b>2.2</b> 属性</a></li>
+<li><a class="menu-level-2" href="/预定义实体表"><b>2.3</b> 预定义实体表</a></li>
+<li><a class="menu-level-1" href="/csl-1.0.1-规范"><b>3</b> CSL 1.0.1 规范</a></li>
+<li><a class="menu-level-2" href="/介绍"><b>3.1</b> 介绍</a></li>
+<li><a class="menu-level-2" href="/命名习惯"><b>3.2</b> 命名习惯</a></li>
+<li><a class="menu-level-2" href="/翻译习惯"><b>3.3</b> 翻译习惯</a></li>
+<li><a class="menu-level-2" href="/文件类型"><b>3.4</b> 文件类型</a></li>
+<li><a class="menu-level-2" href="/xml-声明"><b>3.5</b> XML 声明</a></li>
+<li><a class="menu-level-2" href="/样式结构"><b>3.6</b> 样式结构</a></li>
+<li><a class="menu-level-2" href="/locale-files本地化文件"><b>3.7</b> Locale Files(本地化文件)</a></li>
+<li><a class="menu-level-2" href="/渲染元素"><b>3.8</b> 渲染元素</a></li>
+<li><a class="menu-level-2" href="/样式行为"><b>3.9</b> 样式行为</a></li>
+<li><a class="menu-level-2" href="/附录i-学科分类"><b>3.10</b> 附录I 学科分类</a></li>
+<li><a class="menu-level-2" href="/附录ii-术语"><b>3.11</b> 附录II 术语</a></li>
+<li><a class="menu-level-2" href="/附录iii-文献类型"><b>3.12</b> 附录III 文献类型</a></li>
+<li><a class="menu-level-2" href="/附录iv-变量"><b>3.13</b> 附录IV 变量</a></li>
+<li><a class="menu-level-2" href="/附录v-页码范围格式"><b>3.14</b> 附录V 页码范围格式</a></li>
+<li><a class="menu-level-1" href="/locale-file"><b>4</b> Locale File</a></li>
+<li><a class="menu-level-2" href="/前言-1"><b>4.1</b> 前言</a></li>
+<li><a class="menu-level-2" href="/开始"><b>4.2</b> 开始</a></li>
+<li><a class="menu-level-2" href="/转换-locale-files"><b>4.3</b> 转换 Locale Files</a></li>
+<li><a class="menu-level-2" href="/section"><b>4.4</b> </a></li>
+</div>
+</aside>
+
+<div class="books-content">
+<h2 data-number="3.9" id="样式行为"><span class="header-section-number">3.9</span> 样式行为</h2>
+<h3 data-number="3.9.1" id="选项"><span class="header-section-number">3.9.1</span> 选项</h3>
+<p>样式可以使用不同的元素来进行特定的配置。在<code>cs:citation</code>元素中设置元素可以配置特定的<a href="#引文选项">引文选项</a>；在<code>cs:bibliography</code>元素和<a href="#全局选项">全局选项</a>（同时影响引文和参考文献条目）中，可以配置特定的参考文献条目。继承的名字选项可以在<code>cs:style</code>,<code>cs:style</code>和<code>cs:bibliography</code>中设置。最后，<a href="#本地化选项">本地化选项</a>可以在<code>cs:locale</code>元素中设置。</p>
+<h4 data-number="3.9.1.1" id="引文选项"><span class="header-section-number">3.9.1.1</span> 引文选项</h4>
+<h5 data-number="3.9.1.1.1" id="消除歧义"><span class="header-section-number">3.9.1.1.1</span> 消除歧义</h5>
+<p>当一个引用对应多个参考文献条目的时候会产生歧义。下面有四种方法用来消除歧义：</p>
+<ol type="1">
+<li>显示更多作者姓名</li>
+<li>扩展姓名（添加缩写或者完整的名）</li>
+<li>添加年份后缀</li>
+<li>在<code>cs:choose</code>的<code>disambiguate</code>属性为 true 的时候，实行渲染</li>
+</ol>
+<p>方法2也可以在全局名称歧义消除异己整个文档中有歧义的地方。</p>
+<p>消除歧义的方法在下面属性被设置的时候，将会被激活，并且按上述列表中的方法进行尝试：</p>
+<p><code>disambiguate-add-names</code> 步骤1</p>
+<p>​ 如果设置为<code>"true"</code>（默认为<code>false</code>），使用 et-al 缩写锁代替的名字列表会逐个的加入到渲染列表中，知道添加的名字可以消除引用歧义为止。</p>
+<p><code>disambiguate-add-givenname</code> 步骤2</p>
+<p>​ 如果设置为<code>"true"</code>（默认为<code>false</code>），产生歧义的名字将被扩展。名字扩展可以使用<code>givenname-disambiguation-rule</code>设置。下面是一个例子。 </p>
+<table>
+<thead>
+<tr>
+<th>含有歧义的引用</th>
+<th>消除歧义的引用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(Simpson 2005; Simpson 2005)</td>
+<td>(H. Simpson 2005; B. Simpson 2005)</td>
+</tr>
+<tr>
+<td>(Doe 1950; Doe 1950)</td>
+<td>(John Doe 1950; Jane Doe 1950)</td>
+</tr>
+</tbody>
+</table>
+<p>如果不能通过扩展名字来实现消除歧义，当<code>disambiguate-add-names</code>属性设置为<code>"true"</code>， the names still hidden as a result of et-al abbreviation after the disambiguation attempt of <code>disambiguate-add-names</code> are added one by one to all members of a set of ambiguous cites, until no more cites in the set can be disambiguated by adding expanded names.</p>
+<p><code>givenname-disambiguation-rule</code></p>
+<p>用来指定 a) 名字扩展的目的是不是仅限于消除歧义，还是对消除歧义的名字有其他的目的(只有在后面的情况中，有歧义的名字才会在明确的引用中扩展，例如：从(Doe 1950; Doe 2000)扩展到(Jane Doe 1950; John Doe 2000)) b)名称扩展是针对全部还是针对每个引用的名字 c)扩展名字的方法。</p>
+<p><strong>扩展单个名字</strong></p>
+<p>​ 扩展单个名字的步骤是：</p>
+<ol type="1">
+<li>如果<code>initialize-with</code>被设置并且<code>initialize</code>的值为默认的 true：
+<ol type="a">
+<li>可以通过<code>"long"</code>而不是<code>"short"</code>的形式来渲染首字母 (e.g. Doe 变为 J. Doe)</li>
+<li>如果<code>initialize</code>设置为<code>"flase"</code>，完整的姓名被渲染，而不是首字母（J. Doe 变为 John Doe）</li>
+</ol></li>
+<li>如果<code>initialize-with</code>没有被设置，使用<code>"long"</code>格式渲染完整的姓名（Doe 变为 John Doe）</li>
+</ol>
+<p><strong>消除歧义法则</strong></p>
+<p>​ <code>givenname-disambiguation-rule</code>属性可设置的值为：</p>
+<p>​ “all-name”</p>
+<p>​ 名字扩展具有消除名字歧义和消除引用歧义的双重目的。在渲染的有歧义的名称中，所有的有歧义的或者没有歧义的名字都将被消除歧义。</p>
+<p>​ “all-names-with-initials”</p>
+<p>​ 和 “all-name” 一样，但是名称的扩展仅限于缩写。当<code>initialize-with</code>没被设置或者<code>initialize</code>被设置为<code>"false"</code>时，不会进行消除歧义的尝试。</p>
+<p>​ “primary-name”</p>
+<p>​ 和 “all-name” 一样，但是消除歧义仅限于每个引用的第一个名字。</p>
+<p>​ “primary-name-with-initials”</p>
+<p>​ 和 “all-names-with-initials” 一样，但是消除歧义仅限于每个引用的第一个名字。</p>
+<p>​ “by-cite”</p>
+<p>​ 默认，和 “all-name” 一样，但是名称扩展的目的仅限于消除引用的歧义，只有有歧义的名字在有歧义的引用中才会被影响，并且在引用的第一个名字消除歧义后就停止消除歧义。</p>
+<p><code>disambiguate-add-year-suffix</code> 步骤3</p>
+<p>如果设置为<code>"true"</code>（默认为<code>"false"</code>），字母序的年后缀将会被添加到有歧义的名字上（“Doe 2007, Doe 2007” 变为 “Doe 2007a, Doe 2007b”）。当字母序到达<code>"z"</code>，后，就会启用两个字母（“z”, “aa”, “ab”, …, “az”, “ba” 等等）。</p>
+<hr />
+<p>如果应用上述的歧义消除方法后仍然存在歧义，则尝试通过<code>disambiguate</code>条件来渲染不同的引用[步骤4] (见<a href="#choose">choose</a>)。</p>
+<h5 data-number="3.9.1.1.2" id="引用分组"><span class="header-section-number">3.9.1.1.2</span> 引用分组</h5>
+<p>通过引用分组，可以将相同名称的文本引用放在一起，比如：(Doe 1999; Smith 2002; Doe 2006; Doe et al. 2007)将会变为(Doe 1999; Doe 2006; Smith 2002; Doe et al. 2007)。引用分组在引用排序和消除歧义后执行。分组后的引用保持其相对顺序，并移到第一个改组中引用出现的第一个位置。</p>
+<p>引用分组可以在<code>cs:citation</code>元素中通过设置<code>cite-group-delimiter</code>属性或者<code>collapse</code>属性（见<a href="#cite%20collapsing">cite collapsing</a>）激活。</p>
+<p><code>cite-group-delimiter</code></p>
+<p>激活引用分组并为引用组中的引用指定分隔符，默认为<code>","</code>。例如，当<code>cs:citation</code>元素中的<code>cs:layout</code>中的<code>delimiter</code>设置为<code>";"</code>时，<code>collapse</code>设置为<code>"year"</code>，<code>cite-group-delimiter</code>设置为<code>","</code>，将生成类似 “(Doe 1999,2001; Jones 2000)” 的引用。</p>
+<h5 data-number="3.9.1.1.3" id="cite-collapsing引用折叠"><span class="header-section-number">3.9.1.1.3</span> cite collapsing/引用折叠</h5>
+<p>author或者author-date类型的引用格式中的引用分组和数字格式中的引用范围可以通过<code>collapse</code>属性来折叠。折叠引用组中分隔符可以是使用<code>year-suffix-delimiter</code>和<code>after-collapse-delimiter</code>属性来设置：</p>
+<p><code>collapse</code></p>
+<p>激活引用分组和折叠。允许的值为：</p>
+<ul>
+<li>“citation-number” - 当使用数字样式的时候，折叠引用数字的范围（通过<code>"citation-number"</code>变量来渲染） ，例如：“[1, 2, 3, 5]” 变为 “[1–3, 5]”。只有升序的引用才可以折叠，比如： “[3, 2, 1]” 将不会折叠。</li>
+<li>“year” - 通过压缩相同的名字来折叠引用分组，例如： “(Doe 2000, Doe 2001)” 变为 “(Doe 2000, 2001)”。</li>
+<li>“year-suffix” - 对名字相同的折叠项，折叠相同的年份，例如： “(Doe 2000a, 2000b)”变为”(Doe 2000a, b)“。</li>
+<li>“year-suffix-ranged” - 对名字相同的折叠项，折叠年份范围，例如： “(Doe 2000a, b, c, e)”变为”(Doe 2000a–c,e)“。</li>
+</ul>
+<p>当<code>disambiguate-add-year-suffix</code>设置为<code>"false"</code>时，或者引用中包含位置（例如：“(Doe 2000a-c, 2000d, p. 5, 2000e,f)”，“Doe 2000d”有一个页码位置），“year-suffix”和”year-suffix-ranged”回退到”year”。</p>
+<p><code>year-suffix-delimiter</code></p>
+<p>​ 设置年份后缀的分隔符。默认在<code>cs:citation</code>元素的<code>cs:layout</code>中设置。例如：当<code>collapse</code>设置为<code>"year-suffix"</code>，<code>cs:citation</code>中的<code>cs:layout</code>的<code>delimiter</code>元素设置为<code>";"</code>，并且<code>year-suffix-delimiter</code>设置为<code>","</code>时，渲染结果将类似于 “(Doe 1999a,b; Jones 2000)”。</p>
+<p><code>after-collapse-delimiter</code></p>
+<p>​ 设置折叠后的引用组要使用的分隔符。默认在<code>cs:citation</code>元素的<code>cs:layout</code>中设置。例如：当<code>collapse</code>设置为<code>"year"</code>，<code>cs:citation</code>中的<code>cs:layout</code>的<code>delimiter</code>元素设置为<code>","</code>，并且<code>after-collapse-delimiter</code>设置为<code>";"</code>时，渲染结果将类似于 “(Doe 1999, 2001; Jones 2000, Brown 2001)”。</p>
+<h5 data-number="3.9.1.1.4" id="标注距离"><span class="header-section-number">3.9.1.1.4</span> 标注距离</h5>
+<p><code>near-note-distance</code></p>
+<p>当有一个预先的标注时，<code>"near-note"</code>位置是我引用被判断为真，这种预先的标注可以为 a) 指向同一个项目 b) 当前注视以前的脚注或尾注。（译注：不知道讲了什么）</p>
+<h4 data-number="3.9.1.2" id="参考文献目录选项"><span class="header-section-number">3.9.1.2</span> 参考文献目录选项</h4>
+<h5 data-number="3.9.1.2.1" id="空白"><span class="header-section-number">3.9.1.2.1</span> 空白</h5>
+<p><code>hanging-indent</code></p>
+<p>​ 如果设置为 <code>"true"</code>（默认为<code>"false"</code>），参考文献列表将采用悬挂缩进渲染。</p>
+<p><code>second-field-align</code></p>
+<p>​ 如果该属性被设置，则书目条目的后续行沿第二字段对齐。 使用”flush”时，第一个字段与边距齐平。 对于”margin”，第一个字段放在margin中，随后的行与margin对齐。例如，当第一个字段设置为<code>&lt;text variable="citation-number" suffix=". "/&gt;</code></p>
+<pre><code>9.  Adams, D. (2002). The Ultimate Hitchhiker&#39;s Guide to the
+    Galaxy (1st ed.).
+10. Asimov, I. (1951). Foundation.</code></pre>
+<p><code>line-spacing</code></p>
+<p>​ 指定垂直方向的行距。默认值为<code>"1"</code>，即单倍行距。可以被设置为任意正整数，用来表示对应倍数的行距。</p>
+<p><code>entry-spacing</code></p>
+<p>​ 指定不同条目垂直方向的距离，默认值为<code>"1"</code>，即一倍距离，可以被设置为任意正整数，用来表示对应倍数的距离。</p>
+<h5 data-number="3.9.1.2.2" id="参考文献分组"><span class="header-section-number">3.9.1.2.2</span> 参考文献分组</h5>
+<p><code>subsequent-author-substitute</code></p>
+<p>​ 如果该属性被设置，则此属性将用上一条条目中的名称替换参考文献条目中的名字。具体的代替方案取决于<code>subsequent-author-substitute-rule</code>属性的值。替换仅限于<code>cs:names</code>元素中渲染的第一个名字。</p>
+<p><code>subsequent-author-substitute-rule</code></p>
+<p>​ 用来指定<code>subsequent-author-substitute</code>的结果怎么替换。允许的值为：</p>
+<ul>
+<li>“complete-all” - 默认值，当名字变量中的所有渲染的名字和上一个参考文献条目相同时，<code>subsequent-author-substitute</code> 属性的值将代替整个名字列表（包括标点和术语，比如 et-al 和 and 等术语），但<code>cs:names</code>元素中设置的后缀将不会被代替。</li>
+<li>“complete-each” - 和”complete-all”一样，需要完整的匹配，但是<code>subsequent-author-substitute</code> 属性的值将会代替所有被渲染的名字。</li>
+<li>“partial-each” - 当有一个或者多个名字变量中的渲染名字和上一个条目中相同时，使用<code>subsequent-author-substitute</code> 属性代替对应的值。匹配从第一个名字开始，直到不匹配的名字为止。</li>
+<li>“partial-first” - 和”partial-each”相同，但是替换仅限于第一个名字。</li>
+</ul>
+<p>对下面的例子：</p>
+<pre class="xml"><code>Doe. 1999.
+Doe. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+Doe, Stevens &amp; Miller. 2004.
+Doe, Williams et al. 2005.
+Doe, Williams et al. 2006.</code></pre>
+<p>当<code>subsequent-author-substitute</code>设置为<code>"-"</code>，并且<code>subsequent-author-substitute-rule</code>设置为<code>"complete-all"</code>，渲染结果将变为：</p>
+<pre class="xml"><code>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---. 2004.
+Doe, Williams et al. 2005.
+---. 2005.</code></pre>
+<p>当<code>subsequent-author-substitute-rule</code>设置为<code>"complete-each"</code>时，渲染的结果为：</p>
+<pre class="xml"><code>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+Doe &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, --- &amp; ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2006.</code></pre>
+<p>当<code>subsequent-author-substitute-rule</code>设置为<code>"partial-each"</code>时，渲染的结果为：</p>
+<pre class="xml"><code>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+--- &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, --- &amp; ---. 2004.
+Doe, Williams et al. 2005.
+---, --- et al. 2005.</code></pre>
+<p>当<code>subsequent-author-substitute-rule</code>设置为<code>"partial-first"</code>时，渲染的结果为：</p>
+<pre class="xml"><code>Doe. 1999.
+---. 2000.
+Doe, Johnson &amp; Williams. 2001.
+--- &amp; Smith. 2002.
+Doe, Stevens &amp; Miller. 2003.
+---, Stevens &amp; Miller. 2004.
+Doe, Williams et al. 2005.
+---, Williams et al. 2005.</code></pre>
+<h4 data-number="3.9.1.3" id="全局选项"><span class="header-section-number">3.9.1.3</span> 全局选项</h4>
+<p><strong>人名中的连字符</strong></p>
+<p><code>initialize-with-hyphen</code></p>
+<p>​ 该属性用来制定合成名字中间是不是使用连字符。例如，<code>"Jean-Luc"</code>是一个合成名字，如果该属性设置为<code>"true"</code>（默认），渲染结果为<code>"J.-L."</code>，如果设置为<code>"false"</code>，渲染结果为<code>"J.L."</code>。</p>
+<p><strong>页码范围</strong></p>
+<p><code>page-range-format</code></p>
+<p>​ 用来设置页码范围的格式，是不是使用简写来压缩。其可选的值有：<code>"chicago"</code> (“321–28”)， <code>"expanded"</code> ( “321–328”)， <code>"minimal"</code> (“321–8”)， 或者<code>" minimal-two"</code> (“321–28”)。每一组值前面表示可选的属性值，后面是渲染结果的例子。也可见<a href="#附录V%20页码范围格式">附录V 页码范围格式</a>。使用<code>page-range-delimiter</code>属性可以用来设置页面范围分割的符号，该属性在 CSL 1.0.1 中引入，默认是一个破折号。如果改属性没有设置，就默认使用破折号。</p>
+<p><strong>Name Particles</strong></p>
+<p>​ 西方人的名字中经常包括一个或者多个小部分，例如,<code>"de"</code>在荷兰人的名字中<code>"W. de Koning"</code>。在仅显示姓氏时，这些小部分可以分为必须保留和可删除（或译为不可省略和可省略）两种类型：这两种类型分别称为<code>non-dropping</code>部分和<code>dropping</code>部分。一个单个的名字可以同时包括这两种类型（不能删除的类型始终位于可删除类型的后面）。例如，<code>"W. de Koning"</code>和法国名字<code>"Jean de la Fontaine"</code>可以被解构为：</p>
+<pre class="json"><code>{
+    &quot;author&quot;: [
+        {
+            &quot;given&quot;: &quot;W.&quot;,
+            &quot;non-dropping-particle&quot;: &quot;de&quot;,
+            &quot;family&quot;: &quot;Koning&quot;
+        },
+        {
+            &quot;given&quot;: &quot;Jean&quot;,
+            &quot;dropping-particle&quot;: &quot;de&quot;,
+            &quot;non-dropping-particle&quot;: &quot;La&quot;,
+            &quot;family&quot;: &quot;Fontaine&quot;
+        }
+    ]
+}</code></pre>
+<p>在仅显示姓氏的时候，只保留不能删除的部分，<code>"De koning"</code>和<code>"La Fontaine"</code>。</p>
+<p>在名字倒写的情况下，即姓氏在名字之前，在姓氏后面始终添加<code>dropping particle</code>，但是<code>non-dropping</code>部分可以前置（例如，<code>"de Koning, W."</code>）或者后置（<code>Koning, W. de</code>）。在名字倒写，不可省略粒子前置时，可以使用下面的方式对名字进行排序：排序A：将不可省略粒子和姓一起保留作为主排序键值的一部分；排序B：通过将不可省略粒子和姓分开，并使其成为二级排序键值，并加入可省略粒子（如果有):</p>
+<p><strong>Sort order A: 不可省略粒子不降级</strong></p>
+<ul>
+<li>主排序键值 “La Fontaine”</li>
+<li>次排序键值 “de”</li>
+<li>第三排序键值: “Jean”</li>
+</ul>
+<p><strong>Sort order B: 不可省略粒子降级</strong></p>
+<ul>
+<li>主排序键值 “Fontaine”</li>
+<li>次排序键值 “de La”</li>
+<li>第三排序键值 “Jean”</li>
+</ul>
+<p>对不可省略粒子的设置可以使用<code>demote-non-dropping-particle</code>选项：</p>
+<p><code>demote-non-dropping-particle</code></p>
+<p>​ 用来设置在倒写的名字中不可省略粒子的显示和排序方式（例如 Koning W. de）。可设置的值为：</p>
+<ul>
+<li>“never”: 不可省略粒子被作为姓中的一部分对待，并附加可省略粒子（“de Koning, W.” “La Fontaine, Jean de”）。不可省略粒子作为主排序键值的一部分(排序A，例如. “de Koning, W.” 将出现在首字母 “D”的区域).</li>
+<li>“sort-only”: 显示的方式和 “never” 相同，但是不可省略粒子降级作为二级排序键值。（排序B, “de Koning, W.”出现在首字母”K”的区域).</li>
+<li>“display-and-sort” （默认），可省略粒子和不可省略粒子在最后（ “Koning, W. de” 和 “Fontaine, Jean de La”）。对名字排序，所有的粒子都是二级排序键值的一部分。（排序B，“Koning, W. de” 出现在首字母”K”的区域).</li>
+</ul>
+<p>某些名字中包含的粒子禁止被降级。在这些情况中，粒子将和姓合并到一起，比如，对于法国名字 Charles de Gaulle</p>
+<pre class="json"><code>{
+    &quot;author&quot;: [
+        {
+            &quot;family&quot;: &quot;de Gaulle&quot;,
+            &quot;given&quot;: &quot;Charles&quot;
+        }
+    ]
+}</code></pre>
+<h4 data-number="3.9.1.4" id="可继承的名称选项"><span class="header-section-number">3.9.1.4</span> 可继承的名称选项</h4>
+<p>​ <code>cs:names</code>和<code>cs:name</code>元素的属性也可以在<code>cs:style</code>、<code>cs:citation</code>和<code>cs:bibliography</code>元素中设置。这样就不需要每次在<code>cs:names</code>和<code>cs:name</code>出现的时候赋值。</p>
+<p>​ 可以在<code>cs:name</code>元素中继承的属性有 <code>and</code>, <code>delimiter-precedes-et-al</code>, <code>delimiter-precedes-last</code>, <code>et-al-min</code>, <code>et-al-use-first</code>, <code>et-al-use-last</code>, <code>et-al-subsequent-min</code>, <code>et-al-subsequent-use-first</code>, <code>initialize</code>, <code>initialize-with</code>, <code>name-as-sort-order</code> 和 <code>sort-separator</code>。<code>name-form</code>属性和<code>name-delimiter</code>属性对英语<code>cs:name</code>元素中的<code>form</code>和<code>delimiter</code>属性。同样地，<code>names-delimiter</code>属性对应<code>cs:names</code>元素中的<code>delimiter</code>属性。</p>
+<p>​ 当一个可继承的名称属性在<code>cs:style</code>，<code>cs:citation</code>和<code>cs:bibliography</code>中设置时，其值将作用于改元素包含的所有的<code>cs:names</code>元素。如果一个属性在多个可继承的层次设置，最底层的值发挥作用。</p>
+<h4 data-number="3.9.1.5" id="局部选项"><span class="header-section-number">3.9.1.5</span> 局部选项</h4>
+<p><code>limit-day-ordinals-to-day-1</code></p>
+<p>​ 日期格式在<code>cs:date</code>和<code>cs:date-part</code>元素中定义。默认地，当<code>cs:date-part</code>元素中的<code>name</code>设置为<code>"day"</code>，<code>form</code>属性设置为<code>"ordinal"</code>时，所有的天（1到31）将会以序数形式渲染，例如：“January 1st”，“January 2nd”等等。通过将<code>limit-day-ordinals-to-day-1</code>属性设置为<code>"true"</code>（默认值为<code>"false"</code>），序数格式将仅限于每个月的第一天，其他的天将不使用序数格式。这在某些语言中出现，比如法语，“1er janvier”，“2 janvier”，“3 janvier”。</p>
+<p><code>punctuation-in-quote</code></p>
+<p>​ 当<code>cs:text</code>元素渲染时，如果<code>quotes</code>属性设置为<code>"true"</code>（见<a href="#格式化">格式化</a>），并且在输出后有逗号或者句号，<code>punctuation-in-quote</code>属性可以控制标点放在括号的内还是外，<code>"false"</code>为外（默认），<code>"true"</code>为内。</p>
+<h3 data-number="3.9.2" id="排序"><span class="header-section-number">3.9.2</span> 排序 ***</h3>
+<p>​ <code>cs:citation</code>和<code>cs:bibliography</code>元素可以在<code>cs:layout</code>元素之前携带一个<code>cs:sort</code>子元素，来实现对引文或者参考文献条目的排序。在缺失<code>cs:sort</code>元素时，引文和文献条目将会使用他们在文章中出现的顺序来排序。</p>
+<p>​ <code>cs:sort</code>元素必须包含一个或者多个<code>cs:key</code>子元素，可以在该元素中设置变量（<a href="#附录%20IV%20变量">附录 IV 变量</a>）或者宏名来实现排序。对于每个<code>cs:key</code>元素，排序的顺序可以通过设置<code>sort</code>属性来设置为升序（<code>"ascending"</code>，默认）或者降序（<code>"descending"</code>）。属性<code>names-min</code>,<code>names-use-first</code>,<code>names-use-last</code>可以用来覆盖<code>et-al-min</code>/<code>et-al-subsequent-min</code>, <code>et-al-use-first</code>/<code>et-al-subsequent-use-first</code> 和 <code>et-al-use-last</code> 属性的值，并且可以通过<code>cs:key</code>影响所有的名字.</p>
+<p>​ 排序的键值是按顺序求值的，也就是说：首先，使用第一个排序键值对所有的项目进行排序。然后使用第二个键值对第一个键值排序后的结果进行排序，直到所有的键值都完成排序为止。如果键值为空，就放到最后。</p>
+<p>​ 这里给出一个例子：其中首先引用<code>"author"</code>宏进行排序，并且使用<code>et al.</code>来对较长的作者序列进行代替。然后，使用<code>"issued"</code>变量来进行第二次排序，使用降序：</p>
+<pre class="xml"><code>&lt;citation&gt;
+  &lt;sort&gt;
+    &lt;key macro=&quot;author&quot; names-min=&quot;3&quot; names-use-first=&quot;3&quot;/&gt;
+    &lt;key variable=&quot;issued&quot; sort=&quot;descending&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout&gt;
+    &lt;!-- rendering elements --&gt;
+  &lt;/layout&gt;
+&lt;/citation&gt;</code></pre>
+<p>​ 变量或者宏的排序键值可以与<code>"normal"</code>渲染的输出不同，具体要依赖下面的细节：</p>
+<h4 data-number="3.9.2.1" id="排序变量"><span class="header-section-number">3.9.2.1</span> 排序变量</h4>
+<p>​ <code>cs:key</code>元素通过<code>variable</code>变量属性调用变量的排序键值。名称变量、日期变量和数字变量除外：</p>
+<p><strong>名称</strong>: <a href="#名字变量">名字变量</a>通过变量属性被调用，例如 <code>&lt;key variable="author"/&gt;</code>，当<code>form</code>属性设置为<code>"long"</code>，<code>name-as-sort-order</code>属性设置为<code>"all"</code>，返回名字列表字符串。</p>
+<p><strong>日期</strong>：<a href="#日期变量">日期变量</a>通过<code>variable</code>属性被调用，返回 <code>YYYYMMDD</code>格式。使用0代替缺失的日期部分，例如：<code>December 2000</code>渲染为<code>20001200</code>。因此，简略的日期在升序排列的时候更加靠前，例如：2000, May 2000, May 1st 2000。负数的年份（即公元前）将被反向排序，比如：100BC, 50BC, 50AD, 100AD。排序过程中，季节将被忽略，因为南北半球的季节顺序不同。在日期范围中，开始的日期用于主要排序，结束日期用于次要排序，例如：2000–2001, 2000–2005, 2002–2003, 2002–2009。在具有相同的开始日期时，日期范围将放在单独的日期后，例如：2000, 2000–2002。</p>
+<p><strong>数字</strong>：<a href="#数字变量">数字变量</a>通过<code>variable</code>属性来调用，返回整数（<code>form</code>设置为<code>"numeric"</code>）如果原始的变量值仅由非数字文本组成，则将该值作为文本字符串返回。</p>
+<h4 data-number="3.9.2.2" id="排序宏"><span class="header-section-number">3.9.2.2</span> 排序宏</h4>
+<p>​ 变量排序的键值是由字符串值组成，没有富文本标记。通过宏属性中的键值<code>cs:key</code>来调用。下面为一些特殊情况。</p>
+<p>​ 对于名字排序，使用相同的宏而不是直接使用名字变量来渲染和排序有4个好处。第一，可以使用替换，例如：可以使用<code>"editor"</code>变量代替空的<code>"author"</code>变量。第二，可以使用 et-al 缩写，在宏里使用 <code>et-al-min</code>/<code>et-al-subsequent-min</code>, <code>et-al-use-first</code>/<code>et-al-subsequent-use-first</code>和 <code>et-al-use-last</code> 可选属性，或者覆盖 <code>cs:key</code>元素中的<code>names-min</code>, <code>names-use-first</code> 和 <code>names-use-last</code> 。当 et-al 缩写出现的时候，<code>"et-al"</code>和<code>"and others"</code>术语不会包括在排序键值中。第三，名字可以只使用姓来排序，即使用宏，其中的<code>cs:name</code>扽<code>form</code>属性设置为<code>"short"</code>。最后，通过调用宏，将<code>cs:name</code>中的<code>form</code>属性设置为<code>"count"</code>，可以按姓名列表中姓名的数目进行排序。至于使用<code>variable</code>属性对姓名进行排序，将<code>cs:name</code>中的<code>name-as-sort-order</code>属性设置为<code>"all"</code>，返回值为排序后的名称列表。</p>
+<p>​ 在宏中带有<code>cs:number</code>的<a href="#数字变量">数字变量</a>的和日期变量的渲染方法和通过变量的调用相同。唯一的区别是：如果通过<code>variable</code>属性调用日期变量，将返回完整的日期。相反地，宏调用则只返回原本要渲染的日期部分。例如：</p>
+<h3 data-number="3.9.3" id="范围分隔符"><span class="header-section-number">3.9.3</span> 范围分隔符</h3>
+<p>​ “citation-number”和”year-suffix”变量的折叠范围以短划线分隔，例如”（1-3，5）“和”（Doe 2000a-c，e）“。</p>
+<p>​ “locator” 变量总是使用一个短划线代替任意的连字符。 对 “page” 变量来说，只有<code>cs:style</code>中的<code>page-ran ge-format</code>属性被设置时，替换才会执行（见<a href="#页码范围">页码范围</a>）。</p>
+<h3 data-number="3.9.4" id="格式化"><span class="header-section-number">3.9.4</span> 格式化</h3>
+<p>​ 下面的属性可以在<code>cs:date</code>, <code>cs:date-part</code>, <code>cs:et-al</code>, <code>cs:group</code>, <code>cs:label</code>, <code>cs:layout</code>, <code>cs:name</code>, <code>cs:name-part</code>, <code>cs:names</code>, <code>cs:number</code> 和 <code>cs:text</code>中设置：</p>
+<p><code>font-style</code></p>
+<p>用来设置字体，可能的值为：</p>
+<ul>
+<li>“normal” 默认</li>
+<li>“italic” 设置文字的斜体</li>
+<li>“oblique” 设置没有斜体的文字倾斜</li>
+</ul>
+<p><code>font-variant</code></p>
+<p>Allows for the use of small capitals, 值可以设置为:</p>
+<ul>
+<li>“normal” 默认</li>
+<li>“small-caps”</li>
+</ul>
+<p><code>font-weight</code></p>
+<p>设置字宽，值可以为：</p>
+<ul>
+<li>“normal” 默认</li>
+<li>“bold”</li>
+<li>“light”</li>
+</ul>
+<p><code>text-decoration</code></p>
+<p>设置下划线，值可以为：</p>
+<ul>
+<li>“none” 默认</li>
+<li>“underline”</li>
+</ul>
+<p><code>vertical-align</code></p>
+<p>设置垂直对齐，值可以为：</p>
+<ul>
+<li>“baseline” 默认</li>
+<li>“sup” 上标</li>
+<li>“sub” 下标</li>
+</ul>
+<h3 data-number="3.9.5" id="词缀"><span class="header-section-number">3.9.5</span> 词缀</h3>
+<p>​ 前缀属性<code>prefix</code>和后缀属性<code>suffix</code>可以在<code>cs:date</code>（使用<code>cs:date</code>定义本地化格式除外），<code>cs:date-part</code>（<code>cs:date</code>调用本地化格式除外）、<code>cs:group</code>、<code>cs:label</code>、<code>cs:layout</code>、<code>cs:name</code>、<code>cs:names</code>、<code>cs:number</code>以及<code>cs:text</code>中设置。属性值用来在输出的前面或者后面添加东西，但是只有输出的时候才会渲染。除在<code>cs:layout</code>中设置外，词缀将出现在同一个元素的<a href="#格式化">格式化</a>、<a href="#引用">引用</a>、<a href="#strip-periods">strip-periods</a>和<a href="#text-case">text-case</a>的影响范围的外面，也就是这些属性的设置对前缀和后缀没有影响。作为一种解决方法，在父元素<code>cs:group</code>中设置上述属性，会产生影响。</p>
+<h3 data-number="3.9.6" id="分隔符"><span class="header-section-number">3.9.6</span> 分隔符</h3>
+<p>​ <code>delimiter</code>属性可以在<code>cs:date</code>（用来分隔日期的各部分，如年和月；在<code>cs:date</code>调用本地化格日期格式时，分隔符将被禁用）、<code>cs:name</code>（分隔名字变量中不同的名字列表）、<code>cs:name</code>（分隔名字列表中的名字）、<code>cs:group</code>以及<code>cs;layout</code>（分隔子元素的输出）中设置分隔符。</p>
+<h3 data-number="3.9.7" id="显示"><span class="header-section-number">3.9.7</span> 显示</h3>
+<p><code>display</code>属性可用于将各个参考文献条目构成一个或者多个文本块。如果使用该属性，所有的渲染元素都在该属性的控制下。（译注：是用来设置对齐效果的）属性可能的值为：</p>
+<ul>
+<li>“block” - 两边对其</li>
+<li>“left-margin” - 左对齐。</li>
+<li>“right-inline” - 右对齐</li>
+<li>“indent” - 缩进。</li>
+</ul>
+<p><strong>例</strong></p>
+<p>A. 除使用<code>second-field-align</code>外，使用<code>"left-margin"</code>和<code>"roght-inline"</code>可以实现相同的渲染效果。这种操作方式潜在的好处是，可以在最终的输出中进一步控制块的格式，例如，在HTML 的 CSS 或者 word 的样式中。</p>
+<pre class="xml"><code>&lt;bibliography&gt;
+  &lt;layout&gt;
+    &lt;text display=&quot;left-margin&quot; variable=&quot;citation-number&quot;
+        prefix=&quot;[&quot; suffix=&quot;]&quot;/&gt;
+    &lt;group display=&quot;right-inline&quot;&gt;
+      &lt;!-- rendering elements --&gt;
+    &lt;/group&gt;
+  &lt;/layout&gt;
+&lt;/bibliography&gt;</code></pre>
+<p>B. 每个作者的出版物列表。当<code>subsequent-author-substitute</code>设置为空字符串时，具有相同作者的条目的作者名字只渲染一次。</p>
+<pre class="xml"><code>&lt;bibliography subsequent-author-substitute=&quot;&quot;&gt;
+  &lt;sort&gt;
+    &lt;key variable=&quot;author&quot;/&gt;
+    &lt;key variable=&quot;issued&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout&gt;
+    &lt;group display=&quot;block&quot;&gt;
+      &lt;names variable=&quot;author&quot;/&gt;
+    &lt;/group&gt;
+    &lt;group display=&quot;left-margin&quot;&gt;
+      &lt;date variable=&quot;issued&quot;&gt;
+        &lt;date-part name=&quot;year&quot; /&gt;
+      &lt;/date&gt;
+    &lt;/group&gt;
+    &lt;group display=&quot;right-inline&quot;&gt;
+      &lt;text variable=&quot;title&quot;/&gt;
+    &lt;/group&gt;
+  &lt;/layout&gt;
+&lt;/bibliography&gt;</code></pre>
+<p>渲染结果将类似下面：</p>
+<table>
+<thead>
+<tr>
+<th>Author1</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year-publication1</td>
+<td>title-publication1</td>
+</tr>
+<tr>
+<td>year-publication2</td>
+<td>title-publication2</td>
+</tr>
+<tr>
+<td>Author2</td>
+<td></td>
+</tr>
+<tr>
+<td>year-publication3</td>
+<td>title-publication3</td>
+</tr>
+<tr>
+<td>year-publication4</td>
+<td>title-publication4</td>
+</tr>
+</tbody>
+</table>
+<p>C. 带有注释的条目，注释显示在参下方的缩进块中。</p>
+<pre class="xml"><code>&lt;bibliography&gt;
+  &lt;layout&gt;
+    &lt;group display=&quot;block&quot;&gt;
+      &lt;!-- rendering elements --&gt;
+    &lt;/group&gt;
+    &lt;text display=&quot;indent&quot; variable=&quot;abstract&quot; /&gt;
+  &lt;/layout&gt;
+&lt;/bibliography&gt;</code></pre>
+<h3 data-number="3.9.8" id="引用"><span class="header-section-number">3.9.8</span> 引用</h3>
+<p>​ <code>quotes</code>属性可以在<code>cs:text</code>中设置。当设置为<code>"true"</code>时（默认为<code>"false"</code>），渲染文本将会被包含在引用中。本地化的<code>punctuation-in-quote</code>选项控制用来连接的逗号或者句号是出现在引号的内部还是外部（默认外部），见<a href="#Locale%20options">Locale options</a>。</p>
+<h3 data-number="3.9.9" id="strip-periods"><span class="header-section-number">3.9.9</span> Strip-periods</h3>
+<p>​ <code>strip-periods</code>属性可以在<code>cs:label</code>或者<code>cd:text</code>中设置，此外，当<code>name</code>被设置为<code>"month"</code>时，也可以在<code>cs:date-part</code>中设置。当该属性被设置为<code>true</code>的时候（默认的是<code>"false"</code>），所有文本中的句号（英文中为点）将会被删除。</p>
+<h3 data-number="3.9.10" id="文字大小写"><span class="header-section-number">3.9.10</span> 文字大小写</h3>
+<p>​ <code>text-case</code> 属性可以在<code>cs:date</code>,<code>cs:date-part</code>,<code>cs:label</code>,<code>cs:name-part</code>,<code>cs:number</code>和<code>cs:text</code>中设置，可设置的值为：</p>
+<ul>
+<li>“lowercase”: 使用小写字母渲染文本</li>
+<li>“uppercase”: 使用大写字母渲染文本</li>
+<li>“capitalize-first”: 如果第一个词是小写的，将首字母设置为大写</li>
+<li>“capitalize-all”: 将每个小写词的首字母设置为大写</li>
+<li>“sentence”: renders text in sentence case(以句子的格式设置？)</li>
+<li>“title”: renders text in title case(以标题的格式来设置？)</li>
+</ul>
+<h4 data-number="3.9.10.1" id="句子大小写转换"><span class="header-section-number">3.9.10.1</span> 句子大小写转换</h4>
+<p>句子大小写转换(在”Text-case”中设置为”sentence”),</p>
+<ol type="1">
+<li>对于大写字符串，字符串的第一个字符保持为大写。其它字母表示为小写</li>
+<li>对于大小写混合的字符串，如果单词是小写，第一个单词的首字符大写，其它所有单词的大小写保持不变。</li>
+</ol>
+<p>CSL 处理器不能识别专有名词。因此，可以将句子大小写的字符转缺的转换为标题大小写，反之亦然。因此，通常最好在句子大小写的情况下存储注入标题之类的字符串，并且仅在样式需要其它大小写的情况下菜使用文本大小写。</p>
+<h4 data-number="3.9.10.2" id="标题大小写转换"><span class="header-section-number">3.9.10.2</span> 标题大小写转换</h4>
+<p>标题大小写转换(在”Text-case”中设置为”title”)对英语来说：</p>
+<ol type="1">
+<li>对大写的字符串，每个单词的第一个字母保持大写，其它的字母保持小写。</li>
+<li>对于小写或者是混合的字符串，每个小写字符串的首字母大写。大写的字符串或者是混合的字符串保持原样。</li>
+</ol>
+<p>两种情况下，<code>stop words</code>必须是小写的，除非他们是第一个或者对后一个单词，或者跟在冒号后面。<code>stop words</code>包括：<code>"a", "an", "and", "as", "at", "but", "by", "down", "for", "from", "in", "into", "nor", "of", "on", "onto", "or", "over", "so", "the", "till", "to", "up", "via", "with",  "yet"</code>.</p>
+<p><strong>非英语项目</strong></p>
+<p>​ 由于许多语言不使用标题大小写，标题大小写转换(在”Text-case”中设置为”title”)仅影响英语项目。</p>
+<p>​ 如果<code>cs:style</code>中的<code>default-locale</code>属性没有设置，或者设置为<code>en</code>开头的单词，则假定为英语环境。如果某项的元数据包含一个语言字段，而且该字段不是以<code>"en"</code>开头的，才被视为是非英语环境。</p>
+<p>​ 同样的，<code>default-locale</code>被这是为除<code>en</code>开头的字段，就假定为非英语。如果项目是以<code>en</code>开头的字段，就被视为是英语。</p>
+
+
+<div class="bottom-nav">
+    <p id="nav-prev" style="text-align: left;">
+        <a class="menu-level-2" href="/渲染元素"><b>3.8</b> 渲染元素</a> <kbd>←</kbd>
+        <span id="nav-next" style="float: right;">
+            <kbd>→</kbd> <a class="menu-level-2" href="/附录i-学科分类"><b>3.10</b> 附录I 学科分类</a>
+        </span>
+    </p>
+</div>
+
+
+<div class="license">
+    <br/>
+  <br/>
+  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+    Mao Zhou
+</div>
+</div>
+</div>
+</body>
+</html>

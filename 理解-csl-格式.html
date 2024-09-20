@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Mao Zhou" />
+  <title>理解 CSL 格式 - CSL_Chinese</title>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+  <link rel="stylesheet" href="/style.css"/>
+    <script src="/mousetrap.min.js"></script>
+    <style>
+  @font-face {
+    font-family: JuliaMono-Regular;
+    src: url("/JuliaMono-Regular.woff2");
+  }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/github.min.css">
+<script src="/highlight.min.js"></script>
+<script src="/julia.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre').forEach((el) => {
+        if (!el.classList.contains('output')) {
+            hljs.highlightElement(el);
+        }
+    });
+});
+</script>
+ 
+</head>
+<body>
+<script>
+function click_next() {
+  var next = document.getElementById('nav-next');
+  next.firstElementChild.nextElementSibling.click();
+}
+function click_prev() {
+  var prev = document.getElementById('nav-prev');
+  prev.firstElementChild.click();
+}
+Mousetrap.bind('right', click_next);
+Mousetrap.bind('h', click_prev);
+Mousetrap.bind('left', click_prev);
+Mousetrap.bind('l', click_next);
+</script>
+
+<div class="books-container">
+<aside class="books-menu">
+<input type="checkbox" id="menu">
+<label for="menu">☰</label>
+<div class="books-title">
+<a href="/">CSL_Chinese</a>
+</div><br />
+<span class="books-subtitle">
+
+</span>
+<div class="books-menu-content">
+<li><a class="menu-level-1" href="/welcome-1"><b></b> Welcome</a></li>
+<li><a class="menu-level-1" href="/csl-介绍"><b>1</b> CSL 介绍</a></li>
+<li><a class="menu-level-2" href="/前言"><b>1.1</b> 前言</a></li>
+<li><a class="menu-level-2" href="/csl-是什么"><b>1.2</b> CSL 是什么</a></li>
+<li><a class="menu-level-2" href="/引用格式"><b>1.3</b> 引用格式</a></li>
+<li><a class="menu-level-2" href="/csl-生态"><b>1.4</b> CSL 生态</a></li>
+<li><a class="menu-level-2" href="/理解-csl-格式"><b>1.5</b> 理解 CSL 格式</a></li>
+<li><a class="menu-level-2" href="/更进一步"><b>1.6</b> 更进一步</a></li>
+<li><a class="menu-level-1" href="/xml基础"><b>2</b> XML基础</a></li>
+<li><a class="menu-level-2" href="/元素"><b>2.1</b> 元素</a></li>
+<li><a class="menu-level-2" href="/属性"><b>2.2</b> 属性</a></li>
+<li><a class="menu-level-2" href="/预定义实体表"><b>2.3</b> 预定义实体表</a></li>
+<li><a class="menu-level-1" href="/csl-1.0.1-规范"><b>3</b> CSL 1.0.1 规范</a></li>
+<li><a class="menu-level-2" href="/介绍"><b>3.1</b> 介绍</a></li>
+<li><a class="menu-level-2" href="/命名习惯"><b>3.2</b> 命名习惯</a></li>
+<li><a class="menu-level-2" href="/翻译习惯"><b>3.3</b> 翻译习惯</a></li>
+<li><a class="menu-level-2" href="/文件类型"><b>3.4</b> 文件类型</a></li>
+<li><a class="menu-level-2" href="/xml-声明"><b>3.5</b> XML 声明</a></li>
+<li><a class="menu-level-2" href="/样式结构"><b>3.6</b> 样式结构</a></li>
+<li><a class="menu-level-2" href="/locale-files本地化文件"><b>3.7</b> Locale Files(本地化文件)</a></li>
+<li><a class="menu-level-2" href="/渲染元素"><b>3.8</b> 渲染元素</a></li>
+<li><a class="menu-level-2" href="/样式行为"><b>3.9</b> 样式行为</a></li>
+<li><a class="menu-level-2" href="/附录i-学科分类"><b>3.10</b> 附录I 学科分类</a></li>
+<li><a class="menu-level-2" href="/附录ii-术语"><b>3.11</b> 附录II 术语</a></li>
+<li><a class="menu-level-2" href="/附录iii-文献类型"><b>3.12</b> 附录III 文献类型</a></li>
+<li><a class="menu-level-2" href="/附录iv-变量"><b>3.13</b> 附录IV 变量</a></li>
+<li><a class="menu-level-2" href="/附录v-页码范围格式"><b>3.14</b> 附录V 页码范围格式</a></li>
+<li><a class="menu-level-1" href="/locale-file"><b>4</b> Locale File</a></li>
+<li><a class="menu-level-2" href="/前言-1"><b>4.1</b> 前言</a></li>
+<li><a class="menu-level-2" href="/开始"><b>4.2</b> 开始</a></li>
+<li><a class="menu-level-2" href="/转换-locale-files"><b>4.3</b> 转换 Locale Files</a></li>
+<li><a class="menu-level-2" href="/section"><b>4.4</b> </a></li>
+</div>
+</aside>
+
+<div class="books-content">
+<h2 data-number="1.5" id="理解-csl-格式"><span class="header-section-number">1.5</span> 理解 CSL 格式</h2>
+<p>到现在为止，我们已经知道什么是 CSL 、怎么使用它、以及它怎么运作的。接下来我们将深入到 CSL 文件内部，分析它的 XML 代码。<code>XML基础.md</code> 文件中简单介绍了 XML ，看完后可以读懂并编辑简单的 XML 文件。如果想更多的了解 XML ，可以在网上查找 XML 教程。</p>
+<h3 data-number="1.5.1" id="从属格式解析"><span class="header-section-number">1.5.1</span> 从属格式解析</h3>
+<p>下面是一个 CSL 从属格式文件：</p>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;style xmlns=&quot;http://purl.org/net/xbiblio/csl&quot; version=&quot;1.0&quot; default-locale=&quot;en-US&quot;&gt;
+  &lt;!-- Generated with https://github.com/citation-style-language/utilities/tree/master/generate_dependent_styles/data/asm --&gt;
+  &lt;info&gt;
+    &lt;title&gt;Applied and Environmental Microbiology&lt;/title&gt;
+    &lt;id&gt;http://www.zotero.org/styles/applied-and-environmental-microbiology&lt;/id&gt;
+    &lt;link href=&quot;http://www.zotero.org/styles/applied-and-environmental-microbiology&quot; rel=&quot;self&quot;/&gt;
+    &lt;link href=&quot;http://www.zotero.org/styles/american-society-for-microbiology&quot; rel=&quot;independent-parent&quot;/&gt;
+    &lt;link href=&quot;http://aem.asm.org/&quot; rel=&quot;documentation&quot;/&gt;
+    &lt;category citation-format=&quot;numeric&quot;/&gt;
+    &lt;category field=&quot;biology&quot;/&gt;
+    &lt;issn&gt;0099-2240&lt;/issn&gt;
+    &lt;eissn&gt;1098-5336&lt;/eissn&gt;
+    &lt;updated&gt;2014-04-30T03:45:36+00:00&lt;/updated&gt;
+    &lt;rights license=&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License&lt;/rights&gt;
+  &lt;/info&gt;
+&lt;/style&gt;</code></pre>
+<p>如<code>XML基础.md</code>文件中的描述：一行给出了 XML 的声明。根元素为<code>style</code>，其中包含了一个子元素<code>info</code>。<code>info</code>元素中又包含了很多元素，其中很多元素都有内容和属性。<code>xmlns、version</code> 和<code>defaults-locale</code>都是元素<code>style</code>的属性，分别指定了??、版本和使用的语言，这里为美国英语。</p>
+<p>大多数从属格式都是电子表格自动生成的，下面的注释也给出了指向电子表格的联接。</p>
+<pre class="xml"><code> &lt;!-- Generated with https://github.com/citation-style-language/utilities/tree/master/generate_dependent_styles/data/asm --&gt;</code></pre>
+<p>元素<code>info</code>里包含了大多数<code>style</code>的元数据，比如：</p>
+<p><code>style</code>的题目（也是期刊的题目）：</p>
+<pre class="xml"><code>&lt;title&gt;Applied and Environmental Microbiology&lt;/title&gt;</code></pre>
+<p>样式的ID，是文献管理软件用来区分不同<code>style</code>的标志：</p>
+<pre class="xml"><code>&lt;id&gt;http://www.zotero.org/styles/applied-and-environmental-microbiology&lt;/id&gt;</code></pre>
+<p><code>style</code>自己的链接。该链接指向了网上的副本。</p>
+<pre class="xml"><code>&lt;link href=&quot;http://www.zotero.org/styles/applied-and-environmental-microbiology&quot; rel=&quot;self&quot;/&gt;</code></pre>
+<p>从属格式需要指定它的父格式，父格式为独立格式。这里的父格式为 <code>American Society for Microbiology</code></p>
+<pre class="xml"><code>&lt;link href=&quot;http://www.zotero.org/styles/american-society-for-microbiology&quot; rel=&quot;independent-parent&quot;/&gt;</code></pre>
+<p>为了更好的维护格式，因此需要指定格式的文档链接。这里文档的链接转到了期刊的主页。</p>
+<pre class="xml"><code>&lt;link href=&quot;http://aem.asm.org/&quot; rel=&quot;documentation&quot;/&gt;</code></pre>
+<p>为了便于分类，还可以在<code>category</code>元素中设置它的属性。这里分别设置了引用格式为<code>numeric</code>，领域为<code>biology</code>。</p>
+<pre class="xml"><code>&lt;category citation-format=&quot;numeric&quot;/&gt;
+&lt;category field=&quot;biology&quot;/&gt;</code></pre>
+<p>当期刊创建格式的时候，可以在<code>issn</code>元素和<code>eissn</code>元素中保存其打印标准国际连续出版物号<code>(ISSN)</code>和其电子版本<code>(ESSIN)</code>。</p>
+<pre class="xml"><code>&lt;issn&gt;0099-2240&lt;/issn&gt;
+&lt;eissn&gt;1098-5336&lt;/eissn&gt;</code></pre>
+<p><code>updated</code>元素保存了最后一次更新的时间戳：</p>
+<pre class="xml"><code>&lt;updated&gt;2014-04-30T03:45:36+00:00&lt;/updated&gt;</code></pre>
+<p><code>rights</code>元素中保存了该CSL格式的证书：</p>
+<pre class="xml"><code>&lt;rights license=&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License&lt;/rights&gt;</code></pre>
+<h3 data-number="1.5.2" id="独立格式解析"><span class="header-section-number">1.5.2</span> 独立格式解析</h3>
+<p>下面是一个独立格式的实例，实例中定义了引用格式，所以要比从属格式要大一些。这里的示例只是一个简化的例子，实际的格式比这个还要大很多。但这个简化的例子仍然是完整有效的。</p>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;style xmlns=&quot;http://purl.org/net/xbiblio/csl&quot; class=&quot;in-text&quot; version=&quot;1.0&quot;&gt;
+  &lt;info&gt;
+    &lt;title&gt;Example Style&lt;/title&gt;
+    &lt;id&gt;http://www.zotero.org/styles/example&lt;/id&gt;
+    &lt;link href=&quot;http://www.zotero.org/styles/example&quot; rel=&quot;self&quot;/&gt;
+    &lt;link href=&quot;http://www.zotero.org/styles/apa&quot; rel=&quot;template&quot;/&gt;
+    &lt;link href=&quot;http://www.example.com/style-guide/&quot; rel=&quot;documentation&quot;/&gt;
+    &lt;author&gt;
+      &lt;name&gt;John Doe&lt;/name&gt;
+      &lt;email&gt;JohnDoe@example.com&lt;/email&gt;
+    &lt;/author&gt;
+    &lt;contributor&gt;
+      &lt;name&gt;Jane Doe&lt;/name&gt;
+    &lt;/contributor&gt;
+    &lt;contributor&gt;
+      &lt;name&gt;Bill Johnson&lt;/name&gt;
+    &lt;/contributor&gt;
+    &lt;category citation-format=&quot;author-date&quot;/&gt;
+    &lt;category field=&quot;science&quot;&gt;
+    &lt;updated&gt;2014-10-15T18:17:09+00:00&lt;/updated&gt;
+    &lt;rights license=&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License&lt;/rights&gt;
+  &lt;/info&gt;
+  &lt;locale xml:lang=&quot;en&quot;&gt;
+    &lt;terms&gt;
+      &lt;term name=&quot;no date&quot;&gt;without date&lt;/term&gt;
+    &lt;/terms&gt;
+  &lt;/locale&gt;
+  &lt;macro name=&quot;author&quot;&gt;
+    &lt;names variable=&quot;author&quot;&gt;
+      &lt;name initialize-with=&quot;.&quot;/&gt;
+    &lt;/names&gt;
+  &lt;/macro&gt;
+  &lt;macro name=&quot;issued-year&quot;&gt;
+    &lt;choose&gt;
+      &lt;if variable=&quot;issued&quot;&gt;
+        &lt;date variable=&quot;issued&quot;&gt;
+          &lt;date-part name=&quot;year&quot;/&gt;
+        &lt;/date&gt;
+      &lt;/if&gt;
+      &lt;else&gt;
+        &lt;text term=&quot;no date&quot;/&gt;
+      &lt;/else&gt;
+    &lt;/choose&gt;
+  &lt;/macro&gt;
+  &lt;citation et-al-min=&quot;3&quot; et-al-use-first=&quot;1&quot;&gt;
+    &lt;sort&gt;
+      &lt;key macro=&quot;author&quot;/&gt;
+      &lt;key macro=&quot;issued-year&quot;/&gt;
+    &lt;/sort&gt;
+    &lt;layout prefix=&quot;(&quot; suffix=&quot;)&quot; delimiter=&quot;; &quot;&gt;
+      &lt;group delimiter=&quot;, &quot;&gt;
+        &lt;text macro=&quot;author&quot;/&gt;
+        &lt;text macro=&quot;issued-year&quot;/&gt;
+      &lt;/group&gt;
+    &lt;/layout&gt;
+  &lt;/citation&gt;
+  &lt;bibliography&gt;
+    &lt;sort&gt;
+      &lt;key macro=&quot;author&quot;/&gt;
+      &lt;key macro=&quot;issued-year&quot;/&gt;
+      &lt;key variable=&quot;title&quot;/&gt;
+    &lt;/sort&gt;
+    &lt;layout suffix=&quot;.&quot; delimiter=&quot;, &quot;&gt;
+      &lt;group delimiter=&quot;. &quot;&gt;
+        &lt;text macro=&quot;author&quot;/&gt;
+        &lt;text macro=&quot;issued-year&quot;/&gt;
+        &lt;text variable=&quot;title&quot;/&gt;
+        &lt;text variable=&quot;container-title&quot;/&gt;
+      &lt;/group&gt;
+      &lt;group&gt;
+        &lt;text variable=&quot;volume&quot;/&gt;
+        &lt;text variable=&quot;issue&quot; prefix=&quot;(&quot; suffix=&quot;)&quot;/&gt;
+      &lt;/group&gt;
+      &lt;text variable=&quot;page&quot;/&gt;
+    &lt;/layout&gt;
+  &lt;/bibliography&gt;
+&lt;/style&gt;</code></pre>
+<h4 data-number="1.5.2.1" id="结构"><span class="header-section-number">1.5.2.1</span> 结构</h4>
+<p>首先看一下根元素<code>style</code>的子元素。</p>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;style&gt;
+  &lt;info/&gt;
+  &lt;locale/&gt;
+  &lt;macro/&gt;
+  &lt;macro/&gt;
+  &lt;citation/&gt;
+  &lt;bibliography/&gt;
+&lt;/style&gt;</code></pre>
+<p>相比于从属格式只有<code>info</code>一个子元素，独立格式的根元素有除了<code>info·</code>以外，还有<code>locale 、 macro 、citation、bibliography</code>四个子元素。</p>
+<p>这些子元素的作用分别是：</p>
+<ul>
+<li><p><code>info</code> 该元素在独立格式中的作用和从属格式中相同，都是用来保存基本的格式元数据。</p></li>
+<li><p><code>locale</code> 该元素可以用来从<code>locale file</code>中重写 <code>locale data</code></p></li>
+<li><p><code>macro</code> 用来存储 CSL 代码，这些代码可能应用在 <code>citation 、bibliography</code>或者其他的 <code>macro</code> 元素中。</p></li>
+<li><p><code>citation</code> 定义文中引用的格式。</p></li>
+<li><p><code>bibliography</code> 定义参考文献目录的格式。</p></li>
+</ul>
+<p>以下从<code>style</code>根元素开始分析。</p>
+<h4 data-number="1.5.2.2" id="根元素style元素"><span class="header-section-number">1.5.2.2</span> 根元素/style元素</h4>
+<pre class="xml"><code>&lt;style xmlns=&quot;http://purl.org/net/xbiblio/csl&quot; class=&quot;in-text&quot; version=&quot;1.0&quot;&gt;
+  ...
+&lt;/style&gt;</code></pre>
+<p>在从属格式中我们已经了解了<code>xmlns</code>和<code>version</code>属性，<code>class</code>是新的属性，用来告诉<code>CSL processor</code>(CSL处理器)使用的引用格式是什么。</p>
+<h4 data-number="1.5.2.3" id="info元素"><span class="header-section-number">1.5.2.3</span> info元素</h4>
+<p>独立格式的元数据通常比从属格式的元数据更加全面：</p>
+<pre class="xml"><code>&lt;info&gt;
+  &lt;title&gt;Example Style&lt;/title&gt;
+  &lt;id&gt;http://www.zotero.org/styles/example&lt;/id&gt;
+  &lt;link href=&quot;http://www.zotero.org/styles/example&quot; rel=&quot;self&quot;/&gt;
+  &lt;link href=&quot;http://www.zotero.org/styles/apa&quot; rel=&quot;template&quot;/&gt;
+  &lt;link href=&quot;http://www.example.com/style-guide/&quot; rel=&quot;documentation&quot;/&gt;
+  &lt;author&gt;
+    &lt;name&gt;John Doe&lt;/name&gt;
+    &lt;email&gt;JohnDoe@example.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;contributor&gt;
+    &lt;name&gt;Jane Doe&lt;/name&gt;
+  &lt;/contributor&gt;
+  &lt;contributor&gt;
+    &lt;name&gt;Bill Johnson&lt;/name&gt;
+  &lt;/contributor&gt;
+  &lt;category citation-format=&quot;author-date&quot;/&gt;
+  &lt;category field=&quot;science&quot;&gt;
+  &lt;updated&gt;2014-10-15T18:17:09+00:00&lt;/updated&gt;
+  &lt;rights license=&quot;http://creativecommons.org/licenses/by-sa/3.0/&quot;&gt;This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License&lt;/rights&gt;
+&lt;/info&gt;</code></pre>
+<p><code>title、style ID、"self" link、categories、time stamp、license</code>和从属格式作用都是相同的，但有些许差别。首先，独立格式不依赖父格式，通常是提供一个<code>template(模板)</code>链接，表明当前的独立格式是以模板格式链接创建的（这样写的原因是，通常情况下，凭空写一个 CSL 比较困难，但是借助一个模板改写则容易的多）。这里的模板是<code>APA style</code>。此外，<code>info</code>还倾向于给定一个或者多个<code>document</code>链接，用来指向引文格式的在线描述。</p>
+<p>为了致谢 CSL 格式的创建者，他们的名字和联系方式也可以添加到格式文件中。在当前的例子中，有一个作者和两个贡献者。作者通常完成了创建格式的大部分工作，贡献者一般只提供了一些小的改进。</p>
+<h4 data-number="1.5.2.4" id="citation元素和macro元素"><span class="header-section-number">1.5.2.4</span> citation元素和macro元素</h4>
+<p>接下来分析<code>macros</code>和<code>citation</code>元素。<code>citation</code>元素用来描述引用的格式。</p>
+<pre class="xml"><code>&lt;macro name=&quot;author&quot;&gt;
+  &lt;names variable=&quot;author&quot;&gt;
+    &lt;name initialize-with=&quot;.&quot;/&gt;
+  &lt;/names&gt;
+&lt;/macro&gt;
+&lt;macro name=&quot;issued-year&quot;&gt;
+  &lt;choose&gt;
+    &lt;if variable=&quot;issued&quot;&gt;
+      &lt;date variable=&quot;issued&quot;&gt;
+        &lt;date-part name=&quot;year&quot;/&gt;
+      &lt;/date&gt;
+    &lt;/if&gt;
+    &lt;else&gt;
+      &lt;text term=&quot;no date&quot;/&gt;
+    &lt;/else&gt;
+  &lt;/choose&gt;
+&lt;/macro&gt;
+&lt;citation et-al-min=&quot;3&quot; et-al-use-first=&quot;1&quot;&gt;
+  &lt;sort&gt;
+    &lt;key macro=&quot;author&quot;/&gt;
+    &lt;key macro=&quot;issued-year&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout prefix=&quot;(&quot; suffix=&quot;)&quot; delimiter=&quot;; &quot;&gt;
+    &lt;group delimiter=&quot;, &quot;&gt;
+      &lt;text macro=&quot;author&quot;/&gt;
+      &lt;text macro=&quot;issued-year&quot;/&gt;
+    &lt;/group&gt;
+  &lt;/layout&gt;
+&lt;/citation&gt;</code></pre>
+<p>上面的代码可以生成类似<code>“(A.C. Smith et al., 2002; W. Wallace, J. Snow, 1999)”</code>这样的格式。为了理解这种引用格式在 CSL 中式如何编码的，要先分析<code>citation</code>元素中的<code>layout</code>元素。<code>layout</code>元素中的<code>prefix</code>、<code>suffix</code>和<code>delimiter</code>属性分别定义了前缀（这里为<code>(</code>），后缀（这里为<code>)</code>）以及条目分隔符（这里为<code>;</code>）。也就是说整个条目要放在圆括号中，条目之间以<code>;</code>分隔。每个条目的格式在<code>layout</code>元素的内容中定义。其内容中的<code>group</code>元素包括了<code>author</code>和<code>issue-year</code> macros，并且以<code>,</code>分隔。</p>
+<p><code>macro</code>元素是一种辅助元素，在其他元素或者其他<code>macro</code>元素中使用。通过其名字也可以看出，其与其他语言中的__宏__类似，这里暂不翻译。每个<code>macro</code>都含有<code>name</code>属性。</p>
+<p><strong>注：</strong>以下为了方便描述，将对应的<code>macro</code>元素直接以<code>name</code>指代，例：<code>name</code>为<code>author</code>的<code>macro</code>元素直接称为<code>author</code>元素。</p>
+<p>`<code>author</code>元素的<code>name</code>的属性指定了名称，<code>variable</code>属性保存了具体的作者值，<code>initialize-with</code>表明作者值为首字母缩写，每个首字母后面为<code>.</code>。</p>
+<p><code>issued-year</code>元素以分支语句开始，分支语句以<code>choose</code>元素定义，其中包含<code>if</code>和<code>else</code>元素。如果参考文献有日期，则保存在<code>issued</code>变量中，如果<code>issued-year</code>元素被引用，日期的年份将被印出，否则就印出<code>no date</code>。</p>
+<p><code>layout</code>元素中的<code>group</code>元素的<code>author</code> 用来印出在<code>author</code>元素中存储的值，<code>issued-year</code>则用来印出<code>issued-year</code>元素储存的值。</p>
+<p>为什么不直接把<code>macro</code>中的内容放在<code>citation</code>元素中呢？使用<code>macro</code>有什么好处呢？在上面的例子中，<code>macro</code>的使用简化了<code>citation</code>元素的结构。此外，上述的两个<code>macro</code>总共被调用了4次（两次在 <code>citation</code>元素中，两次在<code>bibliography</code>元素中），如果不使用<code>macro</code>，必须多次重复这些代码。因此<code>macro</code>的使用提供了更紧凑的样式。</p>
+<p>再看<code>citation</code>元素，其中含有两个属性<code>et-al-min</code> 和 <code>et-al-use-first</code>。这里的值分别为<code>3、1</code>，表示作者大于等于<code>3</code>个的时候，使用印出第一个作者，后面跟<code>et al</code>术语。</p>
+<p><code>citation</code>元素中还包括了<code>sort</code>元素，其中包括了两个<code>key</code>元素，用来表明引用的排列顺序。第一个<code>key</code>元素中引用了<code>author</code>宏，第二个宏引用了<code>issued-year</code>宏，表明，先按作者作者字母排序，然后按文献发表年份排序。</p>
+<h4 data-number="1.5.2.5" id="bibliography元素"><span class="header-section-number">1.5.2.5</span> bibliography元素</h4>
+<p><code>citation</code>元素定义了引用的格式，<code>bibliography</code>定义了参考文献条目的格式。</p>
+<pre class="xml"><code>&lt;macro name=&quot;author&quot;&gt;
+  &lt;names variable=&quot;author&quot;&gt;
+    &lt;name initialize-with=&quot;.&quot;/&gt;
+  &lt;/names&gt;
+&lt;/macro&gt;
+&lt;macro name=&quot;issued-year&quot;&gt;
+  &lt;choose&gt;
+    &lt;if variable=&quot;issued&quot;&gt;
+      &lt;date variable=&quot;issued&quot;&gt;
+        &lt;date-part name=&quot;year&quot;/&gt;
+      &lt;/date&gt;
+    &lt;/if&gt;
+    &lt;else&gt;
+      &lt;text term=&quot;no date&quot;/&gt;
+    &lt;/else&gt;
+  &lt;/choose&gt;
+&lt;/macro&gt;
+...
+&lt;bibliography&gt;
+  &lt;sort&gt;
+    &lt;key macro=&quot;author&quot;/&gt;
+    &lt;key macro=&quot;issued-year&quot;/&gt;
+    &lt;key variable=&quot;title&quot;/&gt;
+  &lt;/sort&gt;
+  &lt;layout suffix=&quot;.&quot; delimiter=&quot;, &quot;&gt;
+    &lt;group delimiter=&quot;. &quot;&gt;
+      &lt;text macro=&quot;author&quot;/&gt;
+      &lt;text macro=&quot;issued-year&quot;/&gt;
+      &lt;text variable=&quot;title&quot;/&gt;
+      &lt;text variable=&quot;container-title&quot;/&gt;
+    &lt;/group&gt;
+    &lt;group&gt;
+      &lt;text variable=&quot;volume&quot;/&gt;
+      &lt;text variable=&quot;issue&quot; prefix=&quot;(&quot; suffix=&quot;)&quot;/&gt;
+    &lt;/group&gt;
+    &lt;text variable=&quot;page&quot;/&gt;
+  &lt;/layout&gt;
+&lt;/bibliography&gt;</code></pre>
+<p>上述的例子中的<code>bibliography</code>实际上只适用于一种类型：期刊文章。它生成的条目的格式是：</p>
+<blockquote>
+<p>A.C. Smith, D. Williams, T. Johnson. 2002. Story of my life. Journal of Biographies, 12(2), 24—27. W. Wallace, J. Snow. 1999. Winter is coming. Journal of Climate Dynamics, 6(9), 97—102.</p>
+</blockquote>
+<p>我们怎么定义这种格式呢？首先，<code>bibliography</code>元素的结构和<code>citation</code>元素很相似，不同的是，这里的<code>layout</code>元素用来定义参考文献条目的格式。除了给出<code>author</code>和<code>issued-year</code>，参考文献条目还需要给出每个条目的<code>title</code>、<code>container-title</code>(对期刊文章来说，就是期刊的名称)、<code>volume</code>、<code>issue</code>和<code>page</code>。这里<code>layout</code>元素使用属性<code>suffix</code>和<code>delimiter</code>分别指定了<code>group</code>的后缀为<code>.</code>，以及<code>group</code>之间的分隔符为<code>,</code>。</p>
+<p>和<code>citation</code>元素相同，<code>bibliography</code>也包括了一个<code>sort</code>元素，用来对参考文献条目进行排序。这里的三个<code>key</code>分别为<code>author</code>、<code>issued-year</code>和<code>title</code>。</p>
+<h4 data-number="1.5.2.6" id="locale-元素"><span class="header-section-number">1.5.2.6</span> locale 元素</h4>
+<p>最后介绍的是<code>loacle</code>元素。正如上面写道的，<code>CSL locale file</code>允许 CSL 样式快速转换为不同的语言。但是，有时需要覆盖默认翻译。</p>
+<pre class="xml"><code>&lt;locale xml:lang=&quot;en&quot;&gt;
+  &lt;terms&gt;
+    &lt;term name=&quot;no date&quot;&gt;without date&lt;/term&gt;
+  &lt;/terms&gt;
+&lt;/locale&gt;</code></pre>
+<p>对 US English 来说，<code>"no date"</code>项的内容就是<code>"no date"</code>。但是在我们的例子中，我们想使用<code>"without date"</code>去替换它。为了重写默认的翻译，我们可以使用类似上面的<code>locale</code>元素。对一个没有日期的条目来说，这种重写会导致引用变为像<code>(D. Williams, without date)</code>这样的格式。</p>
+<p><code>locale</code>的<code>xml:lang</code>属性被设置为<code>en</code>，这告诉CSL 样式当样式被用于英语写作的时候，重写<code>"no date"</code>。如果我们在德语写作的时候使用该 CSL ，该样式将会依据<code>German locale file</code>印出德语的翻译(<code>ohne Datum</code>)</p>
+
+
+<div class="bottom-nav">
+    <p id="nav-prev" style="text-align: left;">
+        <a class="menu-level-2" href="/csl-生态"><b>1.4</b> CSL 生态</a> <kbd>←</kbd>
+        <span id="nav-next" style="float: right;">
+            <kbd>→</kbd> <a class="menu-level-2" href="/更进一步"><b>1.6</b> 更进一步</a>
+        </span>
+    </p>
+</div>
+
+
+<div class="license">
+    <br/>
+  <br/>
+  <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+    Mao Zhou
+</div>
+</div>
+</div>
+</body>
+</html>
