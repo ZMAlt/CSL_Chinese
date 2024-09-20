@@ -5,7 +5,7 @@ using Reexport: @reexport
 
 @reexport using Books:
     build_all, html, pdf,
-    gen,
+    gen
 
 """
     build()
