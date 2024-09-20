@@ -10,7 +10,9 @@ on:
 jobs:
   BuildAndDeploy:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,9 +25,18 @@ jobs:
       - run: julia --color=yes --project -e '
                 using Pkg; Pkg.instantiate();
                 using CSL_Chinese; CSL_Chinese.build()'
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      #- name: Deploy to gh-pages branch
+      #  uses: JamesIves/github-pages-deploy-action@releases/v3
+      #  with:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    BRANCH: gh-pages
+      #    FOLDER: _build
+
+      - name: Deploy to secondary branch
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: _build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
+          publish_branch: gh-pages
+          publish_dir: ./_build/
