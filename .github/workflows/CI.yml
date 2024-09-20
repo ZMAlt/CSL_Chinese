@@ -25,6 +25,7 @@ jobs:
       - run: julia --color=yes --project -e '
                 using Pkg; Pkg.instantiate();
                 using CSL_Chinese; CSL_Chinese.build()'
+
       #- name: Deploy to gh-pages branch
       #  uses: JamesIves/github-pages-deploy-action@releases/v3
       #  with:
