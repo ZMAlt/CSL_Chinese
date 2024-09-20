@@ -1,13 +1,11 @@
 module CSL_Chinese
 
 using Books
-
 using Reexport: @reexport
 
-using Reexport: @reexport
 @reexport using Books:
-    build_all,
-    gen
+    build_all, html, pdf,
+    gen,
 
 """
     build()
@@ -18,7 +16,8 @@ function build()
     # To avoid publishing broken websites.
     fail_on_error = true
     gen(; fail_on_error)
-    build_all(; fail_on_error)
+    html()
+    #build_all(; fail_on_error)
 end
 
 end # module
